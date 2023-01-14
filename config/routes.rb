@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get "/birds/:id", to: "birds#show"
   post "/birds", to: "birds#create"
   patch "/birds/:id", to: "birds#update"
+  delete "/birds/:id", to: "birds#destroy"
 end
