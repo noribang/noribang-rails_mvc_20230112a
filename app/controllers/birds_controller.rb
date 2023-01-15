@@ -27,7 +27,6 @@ class BirdsController < ApplicationController
     #     # Return updated bird.
     #     render json: bird
     # end
-
     def update
         # Find bird by id
         bird = Bird.find_by(id: params[:id])
@@ -41,15 +40,23 @@ class BirdsController < ApplicationController
         end
     end
     # DELETE
-    def destroy
-        # Find bird by id.
-        # Destroy bird.
-        # Return head: no_content
+    # def destroy
+    #     # Find bird by id.
+    #     # Destroy bird.
+    #     # Return head: no_content
+    #     bird = Bird.find_by(id: params[:id])
+    #     bird.destroy
+    #     head :no_content
+    # end
+    def destroy 
         bird = Bird.find_by(id: params[:id])
-        bird.destroy
-        head :no_content
+        if bird
+            bird.destroy
+            head :no_content
+        else
+            render json: {error: "Bird not found"}, status: :not_found
+        end
     end
-
 
     private
 
